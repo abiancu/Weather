@@ -1,5 +1,6 @@
 body{
     background-color:azure;
+    background-image: url(background.jpeg);
 }
 
 .col-sm-2{

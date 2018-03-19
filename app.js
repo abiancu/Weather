@@ -1,8 +1,7 @@
-var myAPIKey = "dj0yJmk9T0x4VEd0VWNoaG9QJmQ9WVdrOVJXcHVZVWw0Tm5VbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD05MQ--"
-
-
+   
 
 var buttonSearch = $("#search").click(searchClick);
+$("#results").hide();
 
 function handleResults(data) {
     console.log(data);
@@ -45,12 +44,11 @@ function handleResults(data) {
         $("#body23").html(data.query.results.channel.item.forecast[4].high);
         $("#body24").html(data.query.results.channel.item.forecast[4].low);
         $("#body25").html(data.query.results.channel.item.forecast[4].text);
-    }
-    
-     
-
-    
+    }   
+    $("#results").show();
 }
+
+
 
 function searchClick(event) {
     event.preventDefault();
@@ -60,9 +58,6 @@ function searchClick(event) {
     var query = "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')&format=json"; 
     $.getJSON(query, handleResults );
 
-    
-    
-   
     
 };
 
